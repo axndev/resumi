@@ -3,16 +3,16 @@ import { ArrowRight, ChevronsRight } from 'lucide-react'
 import { Link } from "react-router-dom"
 
 export default function HeroSection() {
-  const logos = [
-    'https://saasly.prebuiltui.com/assets/companies-logo/instagram.svg',
-    'https://saasly.prebuiltui.com/assets/companies-logo/framer.svg',
-    'https://saasly.prebuiltui.com/assets/companies-logo/microsoft.svg',
-    'https://saasly.prebuiltui.com/assets/companies-logo/huawei.svg',
-    'https://saasly.prebuiltui.com/assets/companies-logo/walmart.svg',
-  ]
+  const companiesLogo = [
+    { name: "Framer", logo: "https://saasly.prebuiltui.com/assets/companies-logo/framer.svg", },
+    { name: "Huawei", logo: "https://saasly.prebuiltui.com/assets/companies-logo/huawei.svg", },
+    { name: "Instagram", logo: "https://saasly.prebuiltui.com/assets/companies-logo/instagram.svg", },
+    { name: "Microsoft", logo: "https://saasly.prebuiltui.com/assets/companies-logo/microsoft.svg", },
+    { name: "Walmart", logo: "https://saasly.prebuiltui.com/assets/companies-logo/walmart.svg", }
+  ];
   return (
     <>
-      <div className="relative mt-23 mb-10 flex flex-col items-center justify-center text-sm px-4 md:px-16 lg:px-24 xl:px-40 text-black">
+      <div className="relative mt-23 mb-15 flex flex-col items-center justify-center text-sm px-4 md:px-16 lg:px-24 xl:px-40 text-black">
         <div className="absolute top-28 xl:top-10 -z-10 left-1/4 size-72 sm:size-96 xl:size-120 2xl:size-132 bg-(--primary) blur-[100px] opacity-30"></div>
 
         {/* Avatars + Stars */}
@@ -44,7 +44,7 @@ export default function HeroSection() {
 
         <p className="max-w-md text-center text-base my-7">Create, edit and download professional resumes with AI-powered assistance.
 
-</p>
+        </p>
 
         {/* CTA Buttons */}
         <div className="flex items-center gap-4 ">
@@ -58,10 +58,18 @@ export default function HeroSection() {
           </button>
         </div>
 
-        <p className="py-6 text-slate-600 mt-14">Trusting by leading brands, including</p>
+        <p className="py-6 text-slate-600 mt-14 mb-5">Trusting by leading brands, including</p>
 
-        <div className="flex flex-wrap justify-between max-sm:justify-center gap-6 max-w-3xl w-full mx-auto py-4" id="logo-container">
-          {logos.map((logo, index) => <img key={index} src={logo} alt="logo" className="h-6 w-auto max-w-xs" />)}
+        <div class="overflow-hidden w-full relative max-w-5xl mx-auto select-none">
+          <div class="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent" />
+
+          <div class="flex marquee-inner will-change-transform max-w-5xl mx-auto">
+            {[...companiesLogo, ...companiesLogo].map((company, index) => (
+              <img key={index} className="mx-11" src={company.logo} alt={company.name} />
+            ))}
+          </div>
+
+          <div class="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent" />
         </div>
       </div>
     </>
