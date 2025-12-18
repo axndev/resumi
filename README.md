@@ -73,7 +73,7 @@ src/
 
 ### 1. Clone the repository
 ```bash
-git clone <repo-url>
+git clone https://github.com/axndev/resumi
 cd resumi
 ```
 ### 2. Install dependencies
