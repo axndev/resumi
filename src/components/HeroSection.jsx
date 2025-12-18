@@ -122,13 +122,13 @@ export default function HeroSection() {
               {!isSignedIn ? (
                 <>
                   <Link
-                    to="/login"
+                    to="/register"
                     className="w-full rounded-full border border-gray-200 py-2 text-sm transition hover:bg-gray-100 block text-center"
                   >
                     Get Started
                   </Link>
                   <Link
-                    to="/sign-up"
+                    to="/login"
                     className="w-full rounded-full bg-[var(--primary)] py-2 text-sm text-white transition hover:opacity-90 block text-center"
                   >
                     Login

@@ -20,9 +20,9 @@ import {
     Zap,
     X,
     ArrowLeft,
+    CheckCircle,
 } from "lucide-react"
 import { useAuth } from "@clerk/clerk-react"
-
 
 const steps = [
     { id: 1, title: "Personal", icon: User },
@@ -37,6 +37,8 @@ export default function ResumeBuilder() {
     const { userId } = useAuth();
     const { resumeId } = useParams();
     const location = useLocation();
+    const [alert, setAlert] = useState(null);
+
     const navigate = useNavigate();
 
     const resumeTitle = location.state?.title || "";
@@ -131,9 +133,16 @@ export default function ResumeBuilder() {
             }
         }
 
+        // After saving the resume
         localStorage.setItem(`resumes-${userId}`, JSON.stringify(resumes));
         setUserResumes(resumes);
-        alert("Resume saved!");
+
+        // Show custom alert
+        setAlert({ title: "Saved!", message: "Resume saved successfully" });
+
+        // Hide after 3 seconds
+        setTimeout(() => setAlert(null), 3000);
+
     };
 
     // Reset form for new resume
@@ -178,7 +187,7 @@ export default function ResumeBuilder() {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, [step]);
     return (
-        <div className="min-h-screen bg-gray-50 pt-0 pb-25">    
+        <div className="min-h-screen bg-gray-50 pt-0 pb-25">
             <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between">
                 <Link to="/app" class="inline-flex text-sm gap-2 items-center text-slate-500 hover:text-slate-700 transition-all">
                     <ArrowLeft className="w-4" />  Back to Dashboard
@@ -188,7 +197,7 @@ export default function ResumeBuilder() {
                     type="button"
                     className="md:hidden rounded-full border border-(--primary)/30 text-(--primary) bg-(--primary)/10  font-medium px-5 py-2 cursor-pointer hover:border-(--primary) text-[13px]"
                 >
-                  Download Pdf
+                    Download Pdf
                 </button>
             </div>
             {/* STEPS */}
@@ -215,7 +224,7 @@ export default function ResumeBuilder() {
                     type="button"
                     className="rounded-full border border-(--primary)/30 text-(--primary) bg-(--primary)/10  font-medium px-5 py-2 cursor-pointer hover:border-(--primary) text-[13px]"
                 >
-                  Download Pdf
+                    Download Pdf
                 </button>
             </div>
             <div className="mx-auto grid gap-8 px-6 md:grid-cols-[0.8fr_1.2fr] max-w-7xl">
@@ -628,6 +637,16 @@ export default function ResumeBuilder() {
                     </div>
                 </div>
             </div>
+            {alert && (
+                <div className={`fixed top-5 left-1/2 transform -translate-x-1/2 w-70 bg-white flex gap-3 p-3 text-sm rounded shadow-lg transition-all duration-300 z-50`}>
+                    <CheckCircle className="w-5 text-green-500" />
+                    <div>
+                        <h3 className="font-medium">{alert.title}</h3>
+                        <p className="text-slate-500">{alert.message}</p>
+                    </div>
+                </div>
+            )}
+
         </div>
     )
 }
