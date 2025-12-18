@@ -16,6 +16,8 @@ const colorVariants = [
     { bg: "bg-indigo-200", border: "border-indigo-300", text: "text-indigo-600", muted: "text-indigo-400" },
     { bg: "bg-green-200", border: "border-green-300", text: "text-green-600", muted: "text-green-400" },
     { bg: "bg-pink-200", border: "border-pink-300", text: "text-pink-600", muted: "text-pink-400" },
+    { bg: "bg-yellow-200", border: "border-yellow-300", text: "text-yellow-600", muted: "text-yellow-400" },
+    { bg: "bg-blue-200", border: "border-blue-300", text: "text-blue-600", muted: "text-blue-400" },
 ];
 
 const getColorById = (id) => colorVariants[id % colorVariants.length];
