@@ -35,7 +35,7 @@ export default function Footer() {
           <div className="space-y-5 ">
             <div>
               <Logo />
-              <p className="mt-2 max-w-xs text-sm text-gray-700">
+              <p className="mt-2 max-w-xs text-sm text-gray-700 mt-3">
                 No design skills needed, just powerful tool to create resumes recruiters actually notice.
               </p>
             </div>

@@ -31,13 +31,15 @@ export default function HeroSection() {
   }, []);
   return (
     <>
-      <header className="fixed -top-3 z-50 w-full">
+      <header className="fixed top-0 z-50 w-full">
+
         <nav
-          className={`mx-auto mt-2 max-w-6xl transition-all border-gray-200 duration-300 ${isScrolled
-            ? "!max-w-5xl md:rounded-b-lg  border bg-white/70 backdrop-blur-lg shadow-md"
-            : "pt-2"
+          className={`mx-auto md:mt-2  max-w-6xl transition-all duration-300 ${isScrolled
+            ? "md:rounded-xl md:border border-b border-slate-200 bg-white/80 backdrop-blur-lg shadow-lg"
+            : "pt-2 border border-transparent"
             }`}
         >
+
           <div className="flex items-center justify-between px-6 py-4 bg-white md:bg-transparent">
             {/* Logo */}
             <Logo />
@@ -62,16 +64,20 @@ export default function HeroSection() {
                 <>
                   <Link
                     to="/register"
-                    className="rounded-full bg-[var(--primary)] px-8 p-2.5 text-sm text-white transition hover:opacity-90"
+                    className="rounded-full bg-[var(--primary)] px-7 py-2.5 text-sm text-white
+             font-medium transition hover:opacity-90"
                   >
-                    Get Started
+                    Get Started Free
                   </Link>
+
                   <Link
                     to="/login"
-                    className="rounded-full border border-gray-400 px-8 p-2.5 text-sm transition hover:bg-gray-100"
+                    className="rounded-full px-6 py-2.5 text-sm text-slate-600
+             hover:text-slate-900 transition"
                   >
                     Login
                   </Link>
+
 
                 </>
               ) : (
@@ -123,16 +129,20 @@ export default function HeroSection() {
                 <>
                   <Link
                     to="/register"
-                    className="w-full rounded-full border border-gray-200 py-2 text-sm transition hover:bg-gray-100 block text-center"
+                    className="w-full rounded-full bg-[var(--primary)] py-2.5 text-sm
+             text-white transition hover:opacity-90 block text-center"
                   >
-                    Get Started
+                    Get Started Free
                   </Link>
+
                   <Link
                     to="/login"
-                    className="w-full rounded-full bg-[var(--primary)] py-2 text-sm text-white transition hover:opacity-90 block text-center"
+                    className="w-full rounded-full border border-gray-200 py-2.5 text-sm
+             transition hover:bg-gray-100 block text-center"
                   >
                     Login
                   </Link>
+
                 </>
               ) : (
                 <div>
@@ -144,14 +154,13 @@ export default function HeroSection() {
           </div>
         </nav>
       </header>
-      <svg class="size-full absolute -z-10 inset-0" width="1440" height="720" viewBox="0 0 1440 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="size-full absolute -z-1 inset-0 blur-[1px] opacity-100" width="1440" height="720" viewBox="0 0 1440 720" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path stroke="#E2E8F0" stroke-opacity=".7" d="M-15.227 702.342H1439.7" />
         <circle cx="711.819" cy="372.562" r="308.334" stroke="#E2E8F0" stroke-opacity=".7" />
         <circle cx="16.942" cy="20.834" r="308.334" stroke="#E2E8F0" stroke-opacity=".7" />
         <path stroke="#E2E8F0" stroke-opacity=".7" d="M-15.227 573.66H1439.7M-15.227 164.029H1439.7" />
         <circle cx="782.595" cy="411.166" r="308.334" stroke="#E2E8F0" stroke-opacity=".7" />
       </svg>
-
       <div id="home" className="max-w-6xl m-auto relative mt-23  flex flex-col items-center justify-center text-sm px-4 text-black">
         <div class=" mt-14 flex flex-wrap items-center justify-center p-1.5 rounded-full  border-slate-400 text-gray-500 text-xs">
           <div className="flex items-center gap-1">
@@ -181,15 +190,30 @@ export default function HeroSection() {
             <span>Build Resume</span>
             <ArrowRight className="w-4" />
           </Link>
-          <button class="cursor-not-allowed flex items-center gap-2 border border-slate-300 active:scale-95 hover:bg-white/10 transition text-slate-600 rounded-md px-6 h-11">
+          <button
+            onClick={() => {
+              document.getElementById("templates")?.scrollIntoView({ behavior: "smooth" })
+            }}
+            className="flex items-center gap-2 border border-slate-300
+             hover:bg-slate-100 transition text-slate-700 cursor-pointer
+             rounded-md px-6 h-11"
+          >
             <LayoutTemplate className="w-4 h-4" />
             <span>See Templates</span>
           </button>
+
         </div>
 
-        <div className="border border-slate-200 mt-10 shadow-lg rounded-lg w-full overflow-hidden">
-          <img  src="/images/builder-preview.jpg" className="w-full" />
+        <div className="relative mt-12 w-full max-w-6xl rounded-xl
+                border border-slate-200 bg-white
+                shadow-xl overflow-hidden">
+          <img
+            src="/images/builder-preview.jpg"
+            className="w-full"
+            alt="Resume Builder Preview"
+          />
         </div>
+
       </div>
     </>
   )

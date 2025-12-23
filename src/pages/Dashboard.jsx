@@ -39,13 +39,16 @@ export default function Dashboard() {
 
     useEffect(() => {
         document.title = 'Dashboard';
-    });
+    }, []);
 
 
     useEffect(() => {
         if (!userId) return;
         const saved = localStorage.getItem(`resumes-${userId}`);
-        setUserResumes(saved ? JSON.parse(saved) : []);
+        setUserResumes(
+            saved ? JSON.parse(saved).sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)) : []
+        );
+
     }, [userId]);
 
     if (!isLoaded) return null;
@@ -81,7 +84,9 @@ export default function Dashboard() {
         setVisible(true);
         if (editingResume) {
             updatedResumes = userResumes.map((r) =>
-                r.id === editingResume.id ? { ...r, title: newTitle } : r
+                r.id === editingResume.id
+                    ? { ...r, title: newTitle, updatedAt: new Date().toISOString() }
+                    : r
             );
             showAlert("success", "Updated", "Resume title updated");
         } else {
@@ -89,6 +94,7 @@ export default function Dashboard() {
                 id: Date.now(),
                 title: newTitle,
                 createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString(),
                 data: {},
                 accent: "#3B82F6",
                 template: "Classic"
@@ -112,21 +118,46 @@ export default function Dashboard() {
         <div className="bg-gray-50 py-5 min-h-screen relative">
             <div className="max-w-7xl mx-auto px-4 py-8">
                 <p className="text-2xl font-medium mb-6 text-slate-700 sm:hidden">Welcome, {fullName}</p>
+                <h1 className="text-xl font-semibold text-slate-800 mb-1">
+                    Your Resumes
+                </h1>
+                <p className="text-sm text-slate-500 mb-6">
+                    {userResumes.length} total
+                </p>
 
                 {/* Actions */}
                 <div className="flex gap-4 mb-6">
-                    <button onClick={() => setModalOpen(true)} className="cursor-pointer w-full sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 border border-dashed border-slate-300 hover:border-indigo-500 transition">
-                        <span className="bg-indigo-400 p-2.5 rounded-full text-white"><Plus /></span>
+                    <button aria-label="Create new resume"
+                        onClick={() => setModalOpen(true)}
+                        className="cursor-pointer w-full sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 
+  border border-dashed border-slate-300 
+  hover:border-indigo-500 hover:bg-indigo-50 hover:-translate-y-0.5
+  transition-all"
+                    >
+
+                        <span aria-hidden className="bg-indigo-400 p-2.5 rounded-full text-white">
+                            <Plus /></span>
                         <p className="text-[13px]">Create Resume</p>
                     </button>
-                    <button className="w-full cursor-not-allowed sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 border border-dashed border-slate-300">
+                    <button
+                        className="w-full sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 
+  border border-dashed border-slate-300 
+  opacity-60 cursor-not-allowed"
+                    >
+
                         <span className="bg-purple-400 p-2.5 rounded-full text-white"><CloudUpload /></span>
                         <p className="text-[13px]">Upload Existing</p>
+                        <p className="text-[11px] text-slate-400">Coming soon</p>
+
                     </button>
                 </div>
 
                 <hr className="my-6 sm:w-[305px] border-gray-300" />
-
+                {userResumes.length === 0 && (
+                    <div className="text-sm text-slate-500 mt-8">
+                        You don’t have any resumes yet. Create your first one to get started.
+                    </div>
+                )}
                 {/* Resumes */}
                 <div className="grid grid-cols-2 sm:flex flex-wrap gap-4">
                     {userResumes.map((r) => {
@@ -134,15 +165,15 @@ export default function Dashboard() {
                         return (
                             <div key={r.id} onClick={() => handleEditResume(r)} className={`relative w-full sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 cursor-pointer transition-all hover:shadow-lg ${colors.bg} ${colors.border} ${colors.text} border group`}>
                                 <FilePenLine className="w-7 h-7" />
-                                <p className="text-[13px] font-medium text-center px-2">{r.title}</p>
-                                <p className={`absolute bottom-1 text-[10px] px-2 text-center ${colors.muted}`}>
-                                    Updated on {new Date(r.createdAt).toLocaleDateString()}
+                                <p className="text-sm font-medium text-center px-2">{r.title}</p>
+                                <p className={`absolute bottom-1 text-xs px-2 text-center ${colors.muted}`}>
+                                    Updated on {new Date(r.updatedAt || r.createdAt).toLocaleDateString()}
                                 </p>
                                 <div className="absolute top-1 right-1 sm:hidden flex group-hover:flex gap-1">
-                                    <span onClick={(e) => { e.stopPropagation(); setDeleteConfirm(r); }} className="hover:bg-white/50 px-1 rounded">
+                                    <span onClick={(e) => { e.stopPropagation(); setDeleteConfirm(r); }} className="hover:bg-white/70 px-1 rounded">
                                         <Trash className="w-4" />
                                     </span>
-                                    <span onClick={(e) => { e.stopPropagation(); handleEditTitle(r); }} className="hover:bg-white/50 px-1 rounded">
+                                    <span onClick={(e) => { e.stopPropagation(); handleEditTitle(r); }} className="hover:bg-white/70 px-1 rounded">
                                         <Pencil className="w-4" />
                                     </span>
                                 </div>

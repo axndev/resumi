@@ -1,11 +1,12 @@
+import { CirclePile, Codesandbox, Component, ListTree, Loader, Paperclip, Signature, Stone } from 'lucide-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Logo() {
   return (
-    <Link className='text-3xl font-semibold relative' to='/'>
-      <span>resumi</span>
-      <span className='bg-(--primary) w-2 h-2 absolute bottom-2 rounded-full ml-1'></span>
+    <Link className='text-xl  relative flex items-center gap-2 w-fit rounded-full' to='/'>
+      <Stone className='w-6 text-(--primary) -rotate-100 stroke-2' />
+      <span className='hover:text-(--primary)'>Resumi</span>
     </Link>
   )
 }

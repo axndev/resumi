@@ -46,7 +46,7 @@ function Templates() {
     };
 
     return (
-        <div id="templates" className="flex flex-col max-w-6xl m-auto mb-10">
+        <div id="templates" className="flex flex-col max-w-6xl m-auto mb-10 mt-10">
             <div className="text-left mt-10">
                 <h2 className="text-5xl font-semibold">Professional Templates</h2>
                 <p className="text-gray-700 mt-5 max-w-md">
@@ -54,32 +54,63 @@ function Templates() {
                 </p>
             </div>
 
-            <div className="relative max-w-6xl mt-10 w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-10">
+            <div className="relative max-w-6xl mt-10 w-full mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 {features.map((item, i) => (
                     <div
                         key={i}
-                        className="hover:-translate-y-1 transition duration-300 cursor-pointer"
                         onClick={() => setSelectedTemplate(item)}
+                        className="group cursor-pointer rounded-xl border border-slate-200 bg-white overflow-hidden
+             transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                     >
-                        <div className="bg-white/50 h-100 rounded border border-slate-300 overflow-hidden">
-                            <img src={item.image} alt="" className="rounded h-full w-full object-cover object-top-left" />
+                        {/* Image */}
+                        <div className="relative h-[320px] bg-slate-100 overflow-hidden border-b border-gray-200">
+                            <img
+                                src={item.image}
+                                alt={item.title}
+                                className="h-full w-full object-cover object-top
+                 transition-transform duration-500 group-hover:scale-105"
+                            />
                         </div>
-                        <p className="text-gray-700 mt-5">{item.title}</p>
+
+                        {/* Content */}
+                        <div className="p-5">
+                            <h3 className="text-lg font-semibold text-slate-900">
+                                {item.title}
+                            </h3>
+                            <p className="text-sm text-slate-500 mt-1 line-clamp-2">
+                                {item.desc}
+                            </p>
+
+                            <div className="mt-4 flex items-center gap-1 text-sm font-medium text-(--primary)">
+                                Preview template
+                                <ChevronRight className="w-4 transition-transform group-hover:translate-x-1" />
+                            </div>
+                        </div>
                     </div>
+
                 ))}
             </div>
-
+            <p className="text-xs text-slate-400 mt-10 text-center">
+                More ATS-optimized templates coming soon
+            </p>
             {/* Modal */}
             {selectedTemplate && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
                     <div className="bg-white rounded-lg max-w-3xl w-full p-6 flex flex-col md:flex-row gap-6 relative">
                         <div className="bg-gray-100/50 max-w-90 rounded border border-gray-300 p-1">
-                            <img src={selectedTemplate.image} alt="" className="w-full" />
+                            <img
+                                src={selectedTemplate.image}
+                                alt=""
+                                className="w-full rounded-md shadow object-contain"
+                            />
                         </div>
                         <div className="flex flex-col items-start gap-5 md:w-1/2">
                             <div className="mt-10">
                                 <h3 className="text-2xl font-semibold">{selectedTemplate.title}</h3>
                                 <p className="text-slate-500 mt-5">{selectedTemplate.desc}</p>
+                                <span className="bg-black/80 text-white text-xs px-3 py-1 mt-5 inline-block rounded-full">
+                                    ATS Friendly
+                                </span>
                             </div>
                             <button
                                 onClick={() => handleCreate(selectedTemplate)}
@@ -93,11 +124,12 @@ function Templates() {
                             onClick={() => setSelectedTemplate(null)}
                             className="absolute top-6 right-6 text-slate-500 bg-red-500 hover:bg-red-400 transition text-white cursor-pointer p-1 rounded"
                         >
-                            <X  />
+                            <X />
                         </button>
                     </div>
                 </div>
             )}
+            <div className="mt-16 h-px w-full bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
         </div>
     );
 }

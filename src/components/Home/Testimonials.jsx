@@ -5,28 +5,28 @@ import React, { useState } from "react"
 export default function Testimonials() {
   const cardsData = [
     {
-      image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&auto=format&fit=crop&q=60',
+      image: '/images/user.png',
       name: 'Ali Raza',
       handle: 'Fresh Graduate',
       date: 'Lahore, Pakistan',
       quote: 'I created my resume in less than 10 minutes. The templates are simple and very professional.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60',
+      image: '/images/user.png',
       name: 'Ahmed Khan',
       handle: 'Front-End Developer',
       date: 'Karachi, Pakistan',
       quote: 'Resumi helped me organize my experience properly. I got shortlisted after updating my resume.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60',
+      image: '/images/user.png',
       name: 'Sarah Malik',
       handle: 'Marketing Executive',
       date: 'Islamabad, Pakistan',
       quote: 'Very easy to use, even on mobile. I loved how clean and ATS-friendly the resumes look.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=200&auto=format&fit=crop&q=60',
+      image: '/images/user.png',
       name: 'Usman Farooq',
       handle: 'Job Seeker',
       date: 'Faisalabad, Pakistan',
@@ -34,11 +34,15 @@ export default function Testimonials() {
     },
   ];
 
-
   const CreateCard = ({ card }) => (
     <div className="p-4 rounded-lg mx-4 shadow hover:shadow-lg transition-all duration-200 w-72 shrink-0">
-      <div className="flex gap-2">
-        <img className="size-11 rounded-full" src={card.image} alt="User Image" />
+      <div className="flex gap-2 items-center">
+        <img
+          className="size-10 rounded-full border border-slate-200 bg-slate-100"
+          src={card.image}
+          alt={card.name}
+        />
+
         <div className="flex flex-col">
           <div className="flex items-center gap-1">
             <p>{card.name}</p>
@@ -65,9 +69,9 @@ export default function Testimonials() {
   );
 
   return (
-    <div id="testimonials" className="flex flex-col items-center overflow-x-hidden py-20">
+    <div id="testimonials" className="flex flex-col items-center overflow-x-hidden pb-20 pt-5">
       <div className="text-center mt-6">
-          <h2 className="text-5xl font-semibold">Don't just take our words</h2>
+        <h2 className="text-5xl font-semibold">Don't just take our words</h2>
         <p className="m-auto max-sm max-w-md mt-5 text-gray-700">Hear what our users say about us. We're always looking for ways to improve. If you have a positive experience with us, leave a review.</p>
       </div>
       <div className="my-10 mb-14">
