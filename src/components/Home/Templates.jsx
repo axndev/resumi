@@ -48,8 +48,8 @@ function Templates() {
     return (
         <div id="templates" className="flex flex-col max-w-6xl m-auto mb-10 mt-10">
             <div className="text-left mt-10">
-                <h2 className="text-5xl font-semibold">Professional Templates</h2>
-                <p className="text-gray-700 mt-5 max-w-md">
+                <h2 className="md:text-5xl text-3xl font-semibold">Professional Templates</h2>
+                <p className="text-gray-700 md:mt-5 mt-2 max-w-md">
                     Browse professional templates and start building your resume in minutes.
                 </p>
             </div>

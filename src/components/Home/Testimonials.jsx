@@ -71,7 +71,7 @@ export default function Testimonials() {
   return (
     <div id="testimonials" className="flex flex-col items-center overflow-x-hidden pb-20 pt-5">
       <div className="text-center mt-6">
-        <h2 className="text-5xl font-semibold">Don't just take our words</h2>
+        <h2 className="md:text-5xl text-3xl font-semibold">Don't just take our words</h2>
         <p className="m-auto max-sm max-w-md mt-5 text-gray-700">Hear what our users say about us. We're always looking for ways to improve. If you have a positive experience with us, leave a review.</p>
       </div>
       <div className="my-10 mb-14">

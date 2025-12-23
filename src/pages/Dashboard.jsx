@@ -116,9 +116,9 @@ export default function Dashboard() {
 
     return (
         <div className="bg-gray-50 py-5 min-h-screen relative">
-            <div className="max-w-7xl mx-auto px-4 py-8">
-                <p className="text-2xl font-medium mb-6 text-slate-700 sm:hidden">Welcome, {fullName}</p>
-                <h1 className="text-xl font-semibold text-slate-800 mb-1">
+            <div className="max-w-7xl mx-auto px-4 md:py-8 pt-5">
+                <p className="text-2xl font-medium text-slate-700 sm:hidden">Welcome, {fullName}</p>
+                <h1 className="md:text-xl text-lg font-medium text-slate-800 mb-1">
                     Your Resumes
                 </h1>
                 <p className="text-sm text-slate-500 mb-6">

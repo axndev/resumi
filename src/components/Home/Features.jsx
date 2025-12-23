@@ -27,8 +27,8 @@ export default function Features() {
     <div id="features" className="max-w-6xl mx-auto py-16 pb-0">
 
       <div className="text-left mt-6">
-        <h2 className="text-5xl font-semibold">Powerful Features</h2>
-        <p className="text-gray-700 mt-5 max-w-md">Everything you need to create, customize, and deliver professional resumes, easily and efficiently.</p>
+        <h2 className="md:text-5xl text-3xl font-semibold">Powerful Features</h2>
+        <p className="text-gray-700 md:mt-5 mt-2 max-w-md">Everything you need to create, customize, and deliver professional resumes, easily and efficiently.</p>
       </div>
       <div className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
         {features.map((item, i) => (
