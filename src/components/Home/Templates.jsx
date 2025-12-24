@@ -96,7 +96,7 @@ function Templates() {
             {/* Modal */}
             {selectedTemplate && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-                    <div className="bg-white rounded-lg max-w-3xl w-full p-6 flex flex-col md:flex-row gap-6 relative">
+                    <div className="bg-white mx-2 rounded-lg max-w-3xl w-full p-6 flex flex-col md:flex-row gap-6 relative">
                         <div className="bg-gray-100/50 max-w-90 rounded border border-gray-300 p-1">
                             <img
                                 src={selectedTemplate.image}
@@ -114,7 +114,7 @@ function Templates() {
                             </div>
                             <button
                                 onClick={() => handleCreate(selectedTemplate)}
-                                className="bg-(--primary) flex md:mt-3 gap-1 hover:gap-2 transition-all duration-100 items-center text-sm text-white w-auto px-4 py-2 rounded hover:bg-(--primary)/90 cursor-pointer transition"
+                                className="bg-(--primary) flex mt-3 gap-1 hover:gap-2 transition-all duration-100 items-center text-sm text-white w-auto px-4 py-2 rounded hover:bg-(--primary)/90 cursor-pointer transition"
                             >
                                 <span>Create</span>
                                 <ChevronRight className="w-4" />
