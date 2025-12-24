@@ -104,8 +104,8 @@ function Templates() {
                                 className="w-full rounded-md shadow object-contain"
                             />
                         </div>
-                        <div className="flex flex-col items-start gap-5 md:w-1/2">
-                            <div className="mt-10">
+                        <div className="flex flex-col items-start md:gap-5 md:w-1/2">
+                            <div className="md:mt-10">
                                 <h3 className="text-2xl font-semibold">{selectedTemplate.title}</h3>
                                 <p className="text-slate-500 mt-5">{selectedTemplate.desc}</p>
                                 <span className="bg-black/80 text-white text-xs px-3 py-1 mt-5 inline-block rounded-full">
@@ -114,7 +114,7 @@ function Templates() {
                             </div>
                             <button
                                 onClick={() => handleCreate(selectedTemplate)}
-                                className="bg-(--primary) flex mt-3 gap-1 hover:gap-2 transition-all duration-100 items-center text-sm text-white w-auto px-4 py-2 rounded hover:bg-(--primary)/90 cursor-pointer transition"
+                                className="bg-(--primary) flex md:mt-3 gap-1 hover:gap-2 transition-all duration-100 items-center text-sm text-white w-auto px-4 py-2 rounded hover:bg-(--primary)/90 cursor-pointer transition"
                             >
                                 <span>Create</span>
                                 <ChevronRight className="w-4" />
